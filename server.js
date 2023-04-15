@@ -12,17 +12,18 @@ const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
+// postgres://seedb:P6wxUiqyWSksLorae0wr96xNkhf2Jalc@dpg-cgr6cr5269v4ioo4lqu0-a/seedb
+
 const db = knex({
   client: "pg",
   connection: {
-    host: "127.0.0.1",
+    host: "dpg-cgr6cr5269v4ioo4lqu0-a",
     port: 5432,
-    user: "postgres",
-    password: "123",
-    database: "smart_brain",
+    user: "seedb",
+    password: "P6wxUiqyWSksLorae0wr96xNkhf2Jalc",
+    database: "seedb",
   },
 });
-
 app.get("/", (req, res) => {
   res.json("Hello");
 });
