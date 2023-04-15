@@ -12,11 +12,6 @@ const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-app.use((req, res, next) => {
-  console.log("New one");
-  next();
-});
-
 const db = knex({
   client: "pg",
   connection: {
@@ -28,14 +23,8 @@ const db = knex({
   },
 });
 
-// db.select("*").from("users").then(console.log);
-
 app.get("/", (req, res) => {
-  const user = {
-    name: "Sally",
-    hobby: "dancing",
-  };
-  res.send(user);
+  res.json("Hello");
 });
 
 app.post("/register", (req, res) => {
@@ -50,5 +39,5 @@ app.get("/profile/:id", (req, res) => {
 app.put("/image", (req, res) => {
   image.imageHandler(req, res, db);
 });
-console.log();
+console.log(process.env);
 app.listen(process.env.PORT || 3000);

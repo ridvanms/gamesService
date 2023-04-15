@@ -7,7 +7,7 @@ const registerHandler = (req, res, db, bcrypt) => {
 
   const hash = bcrypt.hashSync(password, 10);
 
-  let emailExist;
+  let emailExist = true;
   db("users")
     .where("email", "=", email)
     .then((email) => {
@@ -18,7 +18,7 @@ const registerHandler = (req, res, db, bcrypt) => {
       emailExist = Boolean(err);
     });
 
-  if (emailExist) return;
+  if (!emailExist) return;
   db.transaction((trx) => {
     trx
       .insert({
