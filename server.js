@@ -39,5 +39,4 @@ app.get("/profile/:id", (req, res) => {
 app.put("/image", (req, res) => {
   image.imageHandler(req, res, db);
 });
-console.log(process.env);
 app.listen(process.env.PORT || 3000);
