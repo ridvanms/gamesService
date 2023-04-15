@@ -41,7 +41,7 @@ const registerHandler = (req, res, db, bcrypt) => {
       })
       .then(trx.commit)
       .catch(trx.rollback);
-  }).catch((err) => console.log(err.message));
+  }).catch((err) => console.log("this is massiv" + err.message));
 };
 module.exports = {
   registerHandler: registerHandler,

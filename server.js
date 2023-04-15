@@ -12,18 +12,17 @@ const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-// postgres://seedb:P6wxUiqyWSksLorae0wr96xNkhf2Jalc@dpg-cgr6cr5269v4ioo4lqu0-a/seedb
-
 const db = knex({
   client: "pg",
   connection: {
-    host: "dpg-cgr6cr5269v4ioo4lqu0-a",
+    host: "127.0.0.1",
     port: 5432,
     user: "seedb",
     password: "P6wxUiqyWSksLorae0wr96xNkhf2Jalc",
     database: "seedb",
   },
 });
+
 app.get("/", (req, res) => {
   res.json("Hello");
 });
@@ -40,4 +39,4 @@ app.get("/profile/:id", (req, res) => {
 app.put("/image", (req, res) => {
   image.imageHandler(req, res, db);
 });
-app.listen(process.env.PORT || 3000);
+app.listen(3000);
